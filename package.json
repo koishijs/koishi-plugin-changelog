@@ -1,0 +1,41 @@
+{
+  "name": "koishi-plugin-changelog",
+  "description": "Show changelog in Koishi Console",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "author": "undefined <masnn0@outlook.com>",
+  "maintainers": [
+    "Shigma <shigma10826@gmail.com>"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koishijs/koishi-plugin-changelog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/koishijs/koishi-plugin-changelog/issues"
+  },
+  "homepage": "https://github.com/koishijs/koishi-plugin-changelog",
+  "keywords": [
+    "bot",
+    "qqbot",
+    "cqhttp",
+    "coolq",
+    "chatbot",
+    "koishi",
+    "plugin",
+    "changelog"
+  ],
+  "peerDependencies": {
+    "@koishijs/plugin-console": "^1.0.0",
+    "koishi": "^4.0.1"
+  },
+  "devDependencies": {
+    "@octokit/openapi-types": "^11.2.0"
+  }
+}
