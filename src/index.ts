@@ -9,8 +9,6 @@ declare module '@koishijs/plugin-console' {
   }
 }
 
-Context.service('console.releases')
-
 type Release = components['schemas']['release']
 
 export default class ReleaseProvider extends DataSource<Release[]> {
