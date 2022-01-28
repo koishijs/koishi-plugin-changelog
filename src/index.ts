@@ -1,17 +1,19 @@
 import { Context } from 'koishi'
-import { DataSource } from '@koishijs/plugin-console'
+import { DataService } from '@koishijs/plugin-console'
 import { components } from '@octokit/openapi-types'
 import { resolve } from 'path'
 
 declare module '@koishijs/plugin-console' {
-  interface Sources {
-    releases: ReleaseProvider
+  namespace Console {
+    interface Services {
+      releases: ReleaseProvider
+    }
   }
 }
 
 type Release = components['schemas']['release']
 
-export default class ReleaseProvider extends DataSource<Release[]> {
+export default class ReleaseProvider extends DataService<Release[]> {
   static using = ['console'] as const
 
   cache: Promise<Release[]>
@@ -19,8 +21,11 @@ export default class ReleaseProvider extends DataSource<Release[]> {
   constructor(ctx: Context) {
     super(ctx, 'releases')
 
-    const filename = ctx.console.config.devMode ? '../client/index.ts' : '../dist/index.js'
-    ctx.console.addEntry(resolve(__dirname, filename))
+    if (ctx.console.config.devMode) {
+      ctx.console.addEntry(resolve(__dirname, '../client/index.ts'))
+    } else {
+      ctx.console.addEntry(resolve(__dirname, '../dist'))
+    }
   }
 
   async get(forced = false) {
