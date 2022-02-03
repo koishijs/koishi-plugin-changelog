@@ -6,7 +6,7 @@ export default (ctx: Context) => {
   ctx.addPage({
     path: '/changelog',
     name: '更新日志',
-    icon: 'info-circle',
+    icon: 'info-full',
     position: 'bottom',
     fields: ['releases'],
     component: ChangeLog,
