@@ -1,4 +1,4 @@
-import { Context } from 'koishi'
+import { Context, Schema } from 'koishi'
 import { DataService } from '@koishijs/plugin-console'
 import { components } from '@octokit/openapi-types'
 import { resolve } from 'path'
@@ -13,8 +13,11 @@ declare module '@koishijs/plugin-console' {
 
 type Release = components['schemas']['release']
 
+export interface Config {}
+
 export default class ReleaseProvider extends DataService<Release[]> {
   static using = ['console'] as const
+  static schema: Schema<Config> = Schema.object({})
 
   cache: Promise<Release[]>
 
