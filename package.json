@@ -1,19 +1,16 @@
 {
   "name": "koishi-plugin-changelog",
   "description": "Show changelog in Koishi Console",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "lib",
     "dist"
   ],
-  "author": "undefined <masnn0@outlook.com>",
-  "maintainers": [
-    "Shigma <shigma10826@gmail.com>"
-  ],
+  "author": "Shigma <shigma10826@gmail.com>",
   "scripts": {
-    "build": "node -r esbuild-register build"
+    "build": "tsc -b && koishi-console build"
   },
   "license": "MIT",
   "repository": {
@@ -36,11 +33,11 @@
     "required:console"
   ],
   "peerDependencies": {
-    "@koishijs/plugin-console": "^2.2.0",
-    "koishi": "^4.2.0"
+    "@koishijs/plugin-console": "^3.2.0",
+    "koishi": "^4.3.2"
   },
   "devDependencies": {
-    "@koishijs/builder": "^2.0.0",
+    "@koishijs/plugin-client": "^3.2.0",
     "@octokit/openapi-types": "^11.2.0",
     "@types/node": "^17.0.10",
     "esbuild": "^0.14.11",
