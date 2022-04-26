@@ -1,4 +1,4 @@
-import { Context } from '~/client'
+import { Context } from '@koishijs/client'
 import type {} from 'koishi-plugin-changelog/src'
 import ChangeLog from './changelog.vue'
 

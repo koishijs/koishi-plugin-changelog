@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
 
-import { store } from '~/client'
+import { store } from '@koishijs/client'
 
 function transform(source: string) {
   return source
