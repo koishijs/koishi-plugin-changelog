@@ -13,7 +13,8 @@ import { store } from '@koishijs/client'
 
 function transform(source: string) {
   return source
-    .replace(/^[^#]+/, '') // 干掉第一个 # 前面所有东西，即 v3 的 release notes 里的无意义内容
+    // remove all above the first '#', which is useless content in release notes of v3
+    .replace(/^[^#]+/, '')
     .replace(/^#+ Other Changes[\s\S]+/gm, '')
     .replace(/^## /gm, '### ')
     .replace(/#(\d+)\b/g, (_, id) => {
