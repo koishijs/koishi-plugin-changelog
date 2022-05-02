@@ -19,8 +19,14 @@ function transform(source: string) {
     .replace(/#(\d+)\b/g, (_, id) => {
       return `[#${id}](https://github.com/koishijs/koishi/issues/${id})`
     })
-    .replace(/\(([0-9a-f]{40})\)/g, (_, hash) => {
-      return `([\`${hash.slice(0, 7)}\`](https://github.com/koishijs/koishi/commit/${hash}))`
+    .replace(/\(([\w-]+\/[\w-]+@)?[0-9a-f]{40}(, ([\w-]+\/[\w-]+@)?[0-9a-f]{40})*\)/g, (match) => {
+      return `(${match.slice(1, -1).split(', ').map((hash)=>{
+        if (hash.includes('@')) {
+          const s = hash.split('@')
+          return `[${s[0]}@\`${s[1].slice(0, 7)}\`](https://github.com/${s[0]}/commit/${s[1]})`
+        }
+        return `[\`${hash.slice(0, 7)}\`](https://github.com/koishijs/koishi/commit/${hash})`
+      }).join(', ')})`
     })
 }
 
