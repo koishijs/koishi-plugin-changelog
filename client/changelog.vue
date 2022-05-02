@@ -28,4 +28,11 @@ function transform(source: string) {
 
 <style lang="scss">
 
+.k-markdown a {
+  color: var(--active);
+  code {
+    color: var(--active);
+  }
+}
+
 </style>
