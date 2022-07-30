@@ -1,10 +1,14 @@
 <template>
-  <template v-for="({ name, body, tag_name }) in store.releases" :key="tag_name">
-    <k-card class="xxx">
-      <h2>{{ name }}</h2>
-      <k-markdown :source="transform(body)"></k-markdown>
-    </k-card>
-  </template>
+  <k-layout main="darker" class="page-changelog">
+    <el-scrollbar>
+      <template v-for="({ name, body, tag_name }) in store.releases" :key="tag_name">
+        <k-card class="xxx">
+          <h2>{{ name }}</h2>
+          <k-markdown :source="transform(body)"></k-markdown>
+        </k-card>
+      </template>
+    </el-scrollbar>
+  </k-layout>
 </template>
 
 <script lang="ts" setup>
@@ -35,10 +39,16 @@ function transform(source: string) {
 
 <style lang="scss">
 
-.k-markdown a {
-  color: var(--active);
-  code {
+.page-changelog .layout-main .el-scrollbar__view {
+  padding: var(--card-margin);
+  display: grid;
+  gap: var(--card-margin);
+
+  .k-markdown a {
     color: var(--active);
+    code {
+      color: var(--active);
+    }
   }
 }
 
